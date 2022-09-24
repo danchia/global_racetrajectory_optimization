@@ -70,6 +70,7 @@ def result_plots(plot_opts: dict,
         plt.xlabel("east in m")
         plt.ylabel("north in m")
         plt.show()
+        plt.savefig('race.png')
 
     if plot_opts["raceline_curv"]:
         # plot curvature profile

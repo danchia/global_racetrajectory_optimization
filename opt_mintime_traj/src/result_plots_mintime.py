@@ -127,6 +127,7 @@ def result_plots_mintime(pars: dict,
                     r'$\it{a_{tot}}$' + ' in ' + r'$\it{\frac{m}{s^2}}$',
                     r'$\it{t}$' + ' in ' + r'$\it{s}$'])
         plt.show()
+        plt.savefig('figs/v_a_t.png')
 
     # ------------------------------------------------------------------------------------------------------------------
     # PLOT: SIDE SLIP ANGLE + YAW RATE + RELATIVE ANGLE TO TANGENT ON REFLINE + STEERING ANGLE -------------------------
@@ -289,6 +290,7 @@ def result_plots_mintime(pars: dict,
         plt.legend([r'$\it{F_{x}}$', r'$\it{F_{y}}$', r'$\it{F_{z}}$'], ncol=3, loc=4)
         plt.grid()
         plt.show()
+        plt.savefig('figs/tires.png')
 
     # ------------------------------------------------------------------------------------------------------------------
     # PLOT: TIRE FORCES (LONGITUDINAL) ---------------------------------------------------------------------------------

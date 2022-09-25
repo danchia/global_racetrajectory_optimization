@@ -58,26 +58,27 @@ def prep_track(reftrack_imp: np.ndarray,
                                                                          normvec_normalized=normvec_normalized_interp,
                                                                          horizon=10)
 
+    bound_1_tmp = reftrack_interp[:, :2] + normvec_normalized_interp * np.expand_dims(reftrack_interp[:, 2], axis=1)
+    bound_2_tmp = reftrack_interp[:, :2] - normvec_normalized_interp * np.expand_dims(reftrack_interp[:, 3], axis=1)
+
+    plt.figure()
+
+    plt.plot(reftrack_interp[:, 0], reftrack_interp[:, 1], 'k-')
+    for i in range(bound_1_tmp.shape[0]):
+        temp = np.vstack((bound_1_tmp[i], bound_2_tmp[i]))
+        plt.plot(temp[:, 0], temp[:, 1], "r-", linewidth=0.7)
+
+    plt.grid()
+    ax = plt.gca()
+    ax.set_aspect("equal", "datalim")
+    plt.xlabel("east in m")
+    plt.ylabel("north in m")
+    plt.title("Track normals")
+
+    plt.show()
+    plt.savefig('figs/normals.png')
+
     if normals_crossing:
-        bound_1_tmp = reftrack_interp[:, :2] + normvec_normalized_interp * np.expand_dims(reftrack_interp[:, 2], axis=1)
-        bound_2_tmp = reftrack_interp[:, :2] - normvec_normalized_interp * np.expand_dims(reftrack_interp[:, 3], axis=1)
-
-        plt.figure()
-
-        plt.plot(reftrack_interp[:, 0], reftrack_interp[:, 1], 'k-')
-        for i in range(bound_1_tmp.shape[0]):
-            temp = np.vstack((bound_1_tmp[i], bound_2_tmp[i]))
-            plt.plot(temp[:, 0], temp[:, 1], "r-", linewidth=0.7)
-
-        plt.grid()
-        ax = plt.gca()
-        ax.set_aspect("equal", "datalim")
-        plt.xlabel("east in m")
-        plt.ylabel("north in m")
-        plt.title("Error: at least one pair of normals is crossed!")
-
-        plt.show()
-
         raise IOError("At least two spline normals are crossed, check input or increase smoothing factor!")
 
     # ------------------------------------------------------------------------------------------------------------------

@@ -65,12 +65,12 @@ def result_plots(plot_opts: dict,
         plt.grid()
         ax = plt.gca()
         ax.arrow(point1_arrow[0], point1_arrow[1], vec_arrow[0], vec_arrow[1],
-                 head_width=7.0, head_length=7.0, fc='g', ec='g')
+                 head_width=0.7, head_length=0.7, fc='g', ec='g')
         ax.set_aspect("equal", "datalim")
         plt.xlabel("east in m")
         plt.ylabel("north in m")
         plt.show()
-        plt.savefig('race.png')
+        plt.savefig('figs/race.png')
 
     if plot_opts["raceline_curv"]:
         # plot curvature profile

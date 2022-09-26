@@ -158,6 +158,7 @@ def result_plots_mintime(pars: dict,
         plt.ylabel('steering angle ' + r'$\delta$' + ' in ' + r'$\it{°}$')
         plt.grid()
         plt.show()
+        plt.savefig('figs/mintime_general.png')
 
     # ------------------------------------------------------------------------------------------------------------------
     # PLOT: LATERAL DISTANCE TO REFERENCE LINE + ROAD BOUNDARIES -------------------------------------------------------

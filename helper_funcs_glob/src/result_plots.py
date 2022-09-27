@@ -136,6 +136,7 @@ def result_plots(plot_opts: dict,
             cur_ind += ind_stepsize
 
         plt.show()
+        plt.savefig('figs/vel_3d.png')
 
     if plot_opts["spline_normals"]:
         plt.figure()

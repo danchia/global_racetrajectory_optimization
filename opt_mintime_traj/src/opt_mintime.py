@@ -204,7 +204,7 @@ def opt_mintime(reftrack: np.ndarray,
 
     # lateral distance to reference line (positive = left) [m]
     n_n = ca.SX.sym('n_n')
-    n_s = 5.0
+    n_s = 0.1
     n = n_s * n_n
 
     # relative angle to tangent on reference line [rad]
@@ -253,22 +253,22 @@ def opt_mintime(reftrack: np.ndarray,
 
     # steer angle [rad]
     delta_n = ca.SX.sym('delta_n')
-    delta_s = 0.5
+    delta_s = 0.1
     delta = delta_s * delta_n
 
     # positive longitudinal force (drive) [N]
     f_drive_n = ca.SX.sym('f_drive_n')
-    f_drive_s = 7500.0
+    f_drive_s = 1.0
     f_drive = f_drive_s * f_drive_n
 
     # negative longitudinal force (brake) [N]
     f_brake_n = ca.SX.sym('f_brake_n')
-    f_brake_s = 20000.0
+    f_brake_s = 1.0
     f_brake = f_brake_s * f_brake_n
 
     # lateral wheel load transfer [N]
     gamma_y_n = ca.SX.sym('gamma_y_n')
-    gamma_y_s = 5000.0
+    gamma_y_s = 1.0
     gamma_y = gamma_y_s * gamma_y_n
 
     # scaling factors for control variables
@@ -496,15 +496,15 @@ def opt_mintime(reftrack: np.ndarray,
     v_max = pars["veh_params"]["v_max"] / v_s       # max. velocity [m/s]
     beta_min = -0.5 * np.pi / beta_s                # min. side slip angle [rad]
     beta_max = 0.5 * np.pi / beta_s                 # max. side slip angle [rad]
-    omega_z_min = - 0.5 * np.pi / omega_z_s         # min. yaw rate [rad/s]
-    omega_z_max = 0.5 * np.pi / omega_z_s           # max. yaw rate [rad/s]
+    omega_z_min = - 3 * np.pi / omega_z_s         # min. yaw rate [rad/s]
+    omega_z_max = 3 * np.pi / omega_z_s           # max. yaw rate [rad/s]
     xi_min = - 0.5 * np.pi / xi_s                   # min. relative angle to tangent on reference line [rad]
     xi_max = 0.5 * np.pi / xi_s                     # max. relative angle to tangent on reference line [rad]
 
     # ------------------------------------------------------------------------------------------------------------------
     # INITIAL GUESS FOR DECISION VARIABLES -----------------------------------------------------------------------------
     # ------------------------------------------------------------------------------------------------------------------
-    v_guess = 20.0 / v_s
+    v_guess = 5.0 / v_s
 
     # ------------------------------------------------------------------------------------------------------------------
     # HELPER FUNCTIONS -------------------------------------------------------------------------------------------------

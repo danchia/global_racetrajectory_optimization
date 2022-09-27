@@ -245,6 +245,7 @@ def result_plots_mintime(pars: dict,
         plt.axis('equal')
         plt.grid()
         plt.show()
+        plt.savefig('figs/kamm.png')
 
     # ------------------------------------------------------------------------------------------------------------------
     # PLOT: TIRE FORCES (LONGITUDINAL + LATERAL + NORMAL) --------------------------------------------------------------

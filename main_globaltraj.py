@@ -29,7 +29,7 @@ file_paths = {"veh_params_file": "racecar.ini"}
 debug = True                                    # print console messages
 plot_opts = {"mincurv_curv_lin": False,         # plot curv. linearization (original and solution based) (mincurv only)
              "raceline": True,                  # plot optimized path
-             "imported_bounds": False,          # plot imported bounds (analyze difference to interpolated bounds)
+             "imported_bounds": True,          # plot imported bounds (analyze difference to interpolated bounds)
              "raceline_curv": True,             # plot curvature profile of optimized path
              "racetraj_vel": True,              # plot velocity profile
              "racetraj_vel_3d": True,          # plot 3D velocity profile above raceline
